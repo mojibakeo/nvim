@@ -35,7 +35,7 @@ return {
         },
         window = {
           position = 'left',
-          width = 30,
+          width = 40,
           mappings = {
             ['l'] = 'open',
             ['<Right>'] = 'open',
