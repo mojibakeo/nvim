@@ -32,6 +32,16 @@ local function on_attach(_, bufnr)
   end, '参照を表示')
   map('n', 'K', vim.lsp.buf.hover, 'ドキュメント表示')
   map('n', 'qf', vim.lsp.buf.code_action, 'コードアクション')
+
+  local ok, lsp_signature = pcall(require, 'lsp_signature')
+  if ok then
+    lsp_signature.on_attach({
+      bind = true,
+      handler_opts = {
+        border = 'rounded'
+      }
+    }, bufnr)
+  end
 end
 
 return {
@@ -43,6 +53,7 @@ return {
       'WhoIsSethDaniel/mason-tool-installer.nvim',
       'hrsh7th/cmp-nvim-lsp',
       { 'j-hui/fidget.nvim', opts = {} },
+      'ray-x/lsp_signature.nvim',
     },
     config = function()
       local mason = require('mason')

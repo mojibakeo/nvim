@@ -136,4 +136,90 @@ return {
       },
     },
   },
+  {
+    'romgrk/barbar.nvim',
+    dependencies = {
+      'lewis6991/gitsigns.nvim',
+      'nvim-tree/nvim-web-devicons',
+    },
+    init = function() vim.g.barbar_auto_setup = false end,
+    opts = {
+      animation = true,
+      insert_at_start = true,
+      maximum_padding = 1,
+      minimum_padding = 1,
+      maximum_length = 30,
+      semantic_letters = true,
+      letters = 'asdfjkl;ghnmxcvbziowerutyqpASDFJKLGHNMXCVBZIOWERUTYQP',
+      no_name_title = nil,
+    },
+  },
+  {
+    'windwp/nvim-autopairs',
+    event = 'InsertEnter',
+    opts = {},
+  },
+  {
+    'kevinhwang91/nvim-hlslens',
+    opts = {},
+  },
+  {
+    'folke/trouble.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    opts = {},
+  },
+  {
+    'shellRaining/hlchunk.nvim',
+    event = { 'BufReadPre', 'BufNewFile' },
+    opts = {
+      chunk = {
+        enable = true,
+        use_treesitter = true,
+        chars = {
+          horizontal_line = '─',
+          vertical_line = '│',
+          left_top = '┌',
+          left_bottom = '└',
+          right_arrow = '►',
+        },
+        style = '#806d9c',
+      },
+      indent = {
+        enable = true,
+        chars = { '│' },
+        style = { '#2d3149' },
+      },
+    },
+  },
+  {
+    'kazhala/close-buffers.nvim',
+    opts = {},
+  },
+  {
+    'Bekaboo/dropbar.nvim',
+    dependencies = {
+      'nvim-telescope/telescope-fzf-native.nvim',
+    },
+    opts = {},
+  },
+  {
+    'monaqa/dial.nvim',
+    keys = {
+      { '<C-a>', '<Plug>(dial-increment)', mode = { 'n', 'v' } },
+      { '<C-x>', '<Plug>(dial-decrement)', mode = { 'n', 'v' } },
+      { 'g<C-a>', 'g<Plug>(dial-increment)', mode = 'v' },
+      { 'g<C-x>', 'g<Plug>(dial-decrement)', mode = 'v' },
+    },
+    config = function()
+      local augend = require('dial.augend')
+      require('dial.config').augends:register_group {
+        default = {
+          augend.integer.alias.decimal,
+          augend.integer.alias.hex,
+          augend.date.alias['%Y/%m/%d'],
+          augend.constant.alias.bool,
+        },
+      }
+    end,
+  },
 }
