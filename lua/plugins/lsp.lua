@@ -32,6 +32,7 @@ local function on_attach(_, bufnr)
   end, '参照を表示')
   map('n', 'K', vim.lsp.buf.hover, 'ドキュメント表示')
   map('n', 'qf', vim.lsp.buf.code_action, 'コードアクション')
+  map('n', '<leader>2', vim.lsp.buf.rename, 'リネーム')
 
   local ok, lsp_signature = pcall(require, 'lsp_signature')
   if ok then
