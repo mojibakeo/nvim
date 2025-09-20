@@ -157,7 +157,7 @@ map('n', '<Space>c', function()
   oxker:toggle()
 end, { desc = 'Oxker', silent = true })
 
-map('n', '<leader>kw', function()
+map('n', '<leader>b', function()
   local ok, close_buffers = pcall(require, 'close_buffers')
   if not ok then
     vim.notify('close-buffers.nvim が見つからない', vim.log.levels.WARN)
@@ -166,7 +166,7 @@ map('n', '<leader>kw', function()
   close_buffers.wipe({ type = 'hidden' })
 end, { desc = '非表示バッファを閉じる', silent = true })
 
-map('n', '<leader>kk', function()
+map('n', '<leader>B', function()
   local ok, close_buffers = pcall(require, 'close_buffers')
   if not ok then
     vim.notify('close-buffers.nvim が見つからない', vim.log.levels.WARN)

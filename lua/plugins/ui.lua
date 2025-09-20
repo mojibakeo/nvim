@@ -27,27 +27,38 @@ return {
       'nvim-tree/nvim-web-devicons',
       'MunifTanjim/nui.nvim',
     },
-    opts = {
-      filesystem = {
-        follow_current_file = { enabled = true },
-        hijack_netrw_behavior = 'open_default',
-      },
-      window = {
-        position = 'left',
-        width = 30,
-        mappings = {
-          ['l'] = 'open',
-          ['<Right>'] = 'open',
-          ['h'] = 'close_node',
-          ['<Left>'] = 'close_node',
-          ['o'] = function(state)
-            local node = state.tree:get_node()
-            local path = node:get_id()
-            vim.fn.jobstart({ 'open', path }, { detach = true })
-          end,
+    config = function()
+      require('neo-tree').setup({
+        filesystem = {
+          follow_current_file = { enabled = true },
+          hijack_netrw_behavior = 'open_default',
         },
-      },
-    },
+        window = {
+          position = 'left',
+          width = 30,
+          mappings = {
+            ['l'] = 'open',
+            ['<Right>'] = 'open',
+            ['h'] = 'close_node',
+            ['<Left>'] = 'close_node',
+            ['o'] = function(state)
+              local node = state.tree:get_node()
+              local path = node:get_id()
+              vim.fn.jobstart({ 'open', path }, { detach = true })
+            end,
+          },
+        },
+      })
+
+      -- Auto-open neo-tree when starting Neovim without a buffer
+      vim.api.nvim_create_autocmd('VimEnter', {
+        callback = function()
+          if vim.fn.argc() == 0 and vim.fn.line2byte('$') == -1 then
+            vim.cmd('Neotree show')
+          end
+        end,
+      })
+    end,
   },
   {
     'numToStr/Comment.nvim',
