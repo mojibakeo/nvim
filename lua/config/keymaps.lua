@@ -28,7 +28,7 @@ end, { desc = 'カーソルラインの切り替え', silent = true })
 
 map('n', '<Space><Space>', telescope('buffers', { sort_mru = true, ignore_current_buffer = true }), { desc = 'バッファ一覧', silent = true })
 map('n', '<Space>a', telescope('live_grep'), { desc = 'ripgrep 検索', silent = true })
-map('n', '<C-o>', telescope('find_files'), { desc = 'ファイル検索', silent = true })
+map('n', '<Space>o', telescope('find_files'), { desc = 'ファイル検索', silent = true })
 
 map('i', '<C-h>', '<BS>', silent)
 map('i', '<C-d>', '<Del>', silent)
@@ -58,7 +58,7 @@ map('n', 'gs', '<cmd>Git<CR>', { desc = 'Git ステータス', silent = true })
 map('n', 'gb', '<cmd>Git blame<CR>', { desc = 'Git blame', silent = true })
 map('n', 'gm', '<cmd>GitMessenger<CR>', { desc = 'Git メッセンジャー', silent = true })
 
-map('n', '<C-_>', function()
+map('n', '<Space>/', function()
   local ok, comment = pcall(require, 'Comment.api')
   if not ok then
     vim.notify('Comment.nvim が見つからない', vim.log.levels.WARN)
@@ -67,7 +67,7 @@ map('n', '<C-_>', function()
   comment.toggle.linewise.current()
 end, { desc = 'コメントトグル', silent = true })
 
-map('v', '<C-_>', function()
+map('v', '<Space>/', function()
   local ok, comment = pcall(require, 'Comment.api')
   if not ok then
     vim.notify('Comment.nvim が見つからない', vim.log.levels.WARN)
@@ -77,10 +77,9 @@ map('v', '<C-_>', function()
 end, { desc = 'コメントトグル', silent = true })
 
 map('n', '<Space>e', toggle_neotree, { desc = 'ファイルツリー切り替え', silent = true })
-map('n', '<C-e>', toggle_neotree, { desc = 'ファイルツリー切り替え', silent = true })
 
 -- Project Manager キーマップ
-map('n', '<C-r>', function()
+map('n', '<Space>r', function()
   local ok, project_manager = pcall(require, 'project-manager')
   if not ok then
     vim.notify('Project Manager is unavailable', vim.log.levels.WARN)

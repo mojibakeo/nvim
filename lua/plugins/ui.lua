@@ -114,4 +114,25 @@ return {
       vim.cmd.colorscheme('github_dark')
     end,
   },
+  {
+    'akinsho/toggleterm.nvim',
+    version = '*',
+    opts = {
+      direction = 'horizontal',
+      size = 20,
+      open_mapping = '<Space>t',
+      hide_numbers = true,
+      shade_terminals = false,
+      start_in_insert = true,
+      insert_mappings = true,
+      terminal_mappings = true,
+      persist_size = true,
+      close_on_exit = true,
+      shell = vim.o.shell,
+      float_opts = {
+        border = 'curved',
+        winblend = 3,
+      },
+    },
+  },
 }
