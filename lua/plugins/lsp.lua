@@ -55,6 +55,7 @@ return {
       'hrsh7th/cmp-nvim-lsp',
       { 'j-hui/fidget.nvim', opts = {} },
       'ray-x/lsp_signature.nvim',
+      'onsails/lspkind.nvim',
     },
     config = function()
       local mason = require('mason')

@@ -57,8 +57,8 @@ map('n', '<Space>l', '<C-w>l', silent)
 
 map('n', 'vs', '<cmd>vsplit<CR>', silent)
 map('n', 'sp', '<cmd>split<CR>', silent)
-map('n', '<C-[>', '<cmd>bnext<CR>', silent)
-map('n', '<C-]>', '<cmd>bprevious<CR>', silent)
+map('n', '<C-h>', '<cmd>bnext<CR>', silent)
+map('n', '<C-l>', '<cmd>bprevious<CR>', silent)
 
 map('n', 'gs', '<cmd>Git<CR>', { desc = 'Git ステータス', silent = true })
 map('n', 'gb', '<cmd>Git blame<CR>', { desc = 'Git blame', silent = true })
