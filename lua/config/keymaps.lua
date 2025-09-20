@@ -19,10 +19,10 @@ local function toggle_neotree()
     vim.notify('neo-tree is unavailable', vim.log.levels.WARN)
     return
   end
-  command.execute({ toggle = true, position = 'float' })
+  command.execute({ toggle = true })
 end
 
-map('n', '<Space>c', function()
+map('n', '<Space>C', function()
   vim.wo.cursorline = not vim.wo.cursorline
 end, { desc = 'カーソルラインの切り替え', silent = true })
 
@@ -96,4 +96,58 @@ map('n', '<Space>pw', function()
   end
   project_manager.show_workspaces()
 end, { desc = 'Show Workspaces', silent = true })
+
+-- lazygit toggle
+map('n', '<Space>g', function()
+  local Terminal = require('toggleterm.terminal').Terminal
+  local lazygit = Terminal:new({
+    cmd = 'lazygit',
+    hidden = true,
+    direction = 'float',
+    close_on_exit = false,
+    float_opts = {
+      border = 'double',
+      width = math.floor(vim.o.columns * 0.9),
+      height = math.floor(vim.o.lines * 0.9),
+    },
+    on_exit = function(t, job, exit_code, name)
+      if exit_code == 0 then
+        t:close()
+      end
+    end,
+  })
+  lazygit:toggle()
+end, { desc = 'Lazygit', silent = true })
+
+-- diffview open
+map('n', '<Space>df', function()
+  local ok, diffview = pcall(require, 'diffview')
+  if not ok then
+    vim.notify('Diffview is unavailable', vim.log.levels.WARN)
+    return
+  end
+  vim.cmd('DiffviewOpen')
+end, { desc = 'Diffview Open', silent = true })
+
+-- oxker floating window
+map('n', '<Space>c', function()
+  local Terminal = require('toggleterm.terminal').Terminal
+  local oxker = Terminal:new({
+    cmd = 'oxker',
+    hidden = true,
+    direction = 'float',
+    close_on_exit = false,
+    float_opts = {
+      border = 'double',
+      width = math.floor(vim.o.columns * 0.9),
+      height = math.floor(vim.o.lines * 0.9),
+    },
+    on_exit = function(t, job, exit_code, name)
+      if exit_code == 0 then
+        t:close()
+      end
+    end,
+  })
+  oxker:toggle()
+end, { desc = 'Oxker', silent = true })
 

@@ -33,7 +33,8 @@ return {
         hijack_netrw_behavior = 'open_default',
       },
       window = {
-        position = 'float',
+        position = 'left',
+        width = 30,
         mappings = {
           ['l'] = 'open',
           ['<Right>'] = 'open',
@@ -44,12 +45,6 @@ return {
             local path = node:get_id()
             vim.fn.jobstart({ 'open', path }, { detach = true })
           end,
-        },
-        popup = {
-          size = {
-            height = '80%',
-            width = '80%',
-          },
         },
       },
     },
@@ -79,6 +74,12 @@ return {
     init = function()
       vim.g.git_messenger_no_default_mappings = true
     end,
+  },
+  {
+    'sindrets/diffview.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    cmd = { 'DiffviewOpen', 'DiffviewClose', 'DiffviewToggleFiles', 'DiffviewFocusFiles' },
+    opts = {},
   },
   {
     'nvim-lualine/lualine.nvim',
