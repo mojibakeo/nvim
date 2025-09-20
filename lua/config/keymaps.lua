@@ -123,7 +123,7 @@ map('n', '<Space>g', function()
     end,
   })
   lazygit:toggle()
-end, { desc = 'Lazygit', silent = true })
+end, { desc = 'Lazygit', silent = true, noremap = true })
 
 -- diffview open
 map('n', '<Space>df', function()
