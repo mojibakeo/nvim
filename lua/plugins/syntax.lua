@@ -1,6 +1,12 @@
 return {
   { 'pantharshit00/vim-prisma', ft = { 'prisma' } },
-  { 'jparise/vim-graphql', ft = { 'graphql', 'typescriptreact', 'javascriptreact' } },
+  {
+    'jparise/vim-graphql',
+    ft = { 'graphql', 'typescriptreact', 'javascriptreact' },
+    config = function()
+      vim.g.graphql_javascript_tags = { 'gql', 'graphql', 'Relay.QL' }
+    end,
+  },
   { 'styled-components/vim-styled-components', branch = 'main', ft = { 'typescriptreact', 'javascriptreact' } },
   { 'rust-lang/rust.vim', ft = { 'rust' } },
   {

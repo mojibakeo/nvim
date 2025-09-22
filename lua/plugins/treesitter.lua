@@ -13,6 +13,7 @@ return {
         'css',
         'go',
         'gosum',
+        'graphql',
         'html',
         'javascript',
         'jsdoc',

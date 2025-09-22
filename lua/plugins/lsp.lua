@@ -67,6 +67,7 @@ return {
         'typescript-language-server',
         'prisma-language-server',
         'tsp-server',
+        'graphql-language-service-cli',
       }
 
       require('mason-tool-installer').setup({
@@ -125,6 +126,9 @@ return {
         },
         prismals = {},
         tsp_server = {},
+        graphql = {
+          filetypes = { 'graphql', 'typescriptreact', 'javascriptreact', 'typescript', 'javascript' },
+        },
       }
 
       require('mason-lspconfig').setup({

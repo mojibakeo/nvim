@@ -9,6 +9,10 @@ opt.cursorline = false
 opt.termguicolors = true
 opt.clipboard = 'unnamedplus'
 
+-- 行番号表示
+opt.number = true
+opt.relativenumber = false
+
 -- インデント設定
 opt.tabstop = 2
 opt.shiftwidth = 2
