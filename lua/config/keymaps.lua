@@ -2,14 +2,14 @@ local map = vim.keymap.set
 
 local silent = { silent = true }
 
-local function telescope(builtin, opts)
+local function fzf(cmd, opts)
   return function()
-    local ok, builtin_module = pcall(require, 'telescope.builtin')
+    local ok, fzf_lua = pcall(require, 'fzf-lua')
     if not ok then
-      vim.notify('Telescope is unavailable', vim.log.levels.WARN)
+      vim.notify('fzf-lua is unavailable', vim.log.levels.WARN)
       return
     end
-    builtin_module[builtin](opts or {})
+    fzf_lua[cmd](opts or {})
   end
 end
 
@@ -26,9 +26,12 @@ map('n', '<Space>C', function()
   vim.wo.cursorline = not vim.wo.cursorline
 end, { desc = 'カーソルラインの切り替え', silent = true })
 
-map('n', '<Space><Space>', telescope('buffers', { sort_mru = true, ignore_current_buffer = true }), { desc = 'バッファ一覧', silent = true })
-map('n', '<Space>a', telescope('live_grep'), { desc = 'ripgrep 検索', silent = true })
-map('n', '<Space>o', telescope('find_files'), { desc = 'ファイル検索', silent = true })
+map('n', '<Space><Space>', fzf('buffers'), { desc = 'バッファ一覧', silent = true })
+map('n', '<Space>a', fzf('live_grep'), { desc = 'ripgrep 検索', silent = true })
+map('n', '<Space>o', fzf('git_files'), { desc = 'Gitファイル検索', silent = true })
+map('n', '<Space>O', fzf('files'), { desc = '全ファイル検索', silent = true })
+map('n', '<C-o>', fzf('files'), { desc = 'ファイル検索', silent = true })
+map('n', '<C-e>', fzf('oldfiles'), { desc = '最近開いたファイル', silent = true })
 
 map('i', '<C-h>', '<BS>', silent)
 map('i', '<C-d>', '<Del>', silent)

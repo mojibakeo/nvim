@@ -1,21 +1,64 @@
 return {
   {
-    'nvim-telescope/telescope.nvim',
-    dependencies = { 'nvim-lua/plenary.nvim' },
-    cmd = 'Telescope',
+    'ibhagwan/fzf-lua',
+    dependencies = {
+      'nvim-tree/nvim-web-devicons',
+    },
+    cmd = 'FzfLua',
     opts = {
-      defaults = {
-        layout_strategy = 'flex',
-        sorting_strategy = 'ascending',
-        layout_config = {
-          prompt_position = 'top',
+      'telescope',
+      winopts = {
+        height = 0.85,
+        width = 0.80,
+        row = 0.35,
+        col = 0.50,
+        preview = {
+          layout = 'flex',
+          flip_columns = 120,
         },
-        mappings = {
-          i = {
-            ['<C-j>'] = 'move_selection_next',
-            ['<C-k>'] = 'move_selection_previous',
-          },
+      },
+      keymap = {
+        builtin = {
+          ['<C-j>'] = 'down',
+          ['<C-k>'] = 'up',
         },
+      },
+      files = {
+        prompt = 'Files❯ ',
+        multiprocess = true,
+        git_icons = true,
+        file_icons = true,
+        color_icons = true,
+      },
+      grep = {
+        prompt = 'Rg❯ ',
+        input_prompt = 'Grep For❯ ',
+        multiprocess = true,
+        git_icons = true,
+        file_icons = true,
+        color_icons = true,
+      },
+      buffers = {
+        prompt = 'Buffers❯ ',
+        file_icons = true,
+        color_icons = true,
+        sort_mru = true,
+        ignore_current_buffer = true,
+      },
+      git = {
+        files = {
+          prompt = 'Git Files❯ ',
+          cmd = 'git ls-files --exclude-standard',
+          multiprocess = true,
+          git_icons = true,
+          file_icons = true,
+          color_icons = true,
+        },
+      },
+      oldfiles = {
+        prompt = 'History❯ ',
+        cwd_only = true,
+        include_current_session = true,
       },
     },
   },
@@ -179,40 +222,40 @@ return {
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     opts = {},
   },
-  {
-    'shellRaining/hlchunk.nvim',
-    event = { 'BufReadPre', 'BufNewFile' },
-    opts = {
-      chunk = {
-        enable = true,
-        use_treesitter = true,
-        chars = {
-          horizontal_line = '─',
-          vertical_line = '│',
-          left_top = '┌',
-          left_bottom = '└',
-          right_arrow = '►',
-        },
-        style = '#806d9c',
-      },
-      indent = {
-        enable = true,
-        chars = { '│' },
-        style = { '#2d3149' },
-      },
-    },
-  },
+  -- {
+  --   'shellRaining/hlchunk.nvim',
+  --   event = { 'BufReadPre', 'BufNewFile' },
+  --   opts = {
+  --     chunk = {
+  --       enable = true,
+  --       use_treesitter = true,
+  --       chars = {
+  --         horizontal_line = '─',
+  --         vertical_line = '│',
+  --         left_top = '┌',
+  --         left_bottom = '└',
+  --         right_arrow = '►',
+  --       },
+  --       style = '#806d9c',
+  --     },
+  --     indent = {
+  --       enable = true,
+  --       chars = { '│' },
+  --       style = { '#2d3149' },
+  --     },
+  --   },
+  -- },
   {
     'kazhala/close-buffers.nvim',
     opts = {},
   },
-  {
-    'Bekaboo/dropbar.nvim',
-    dependencies = {
-      'nvim-telescope/telescope-fzf-native.nvim',
-    },
-    opts = {},
-  },
+  -- {
+  --   'Bekaboo/dropbar.nvim',
+  --   dependencies = {
+  --     'nvim-telescope/telescope-fzf-native.nvim',
+  --   },
+  --   opts = {},
+  -- },
   {
     'monaqa/dial.nvim',
     keys = {

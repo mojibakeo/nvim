@@ -1,7 +1,6 @@
 local M = {}
 local uv = vim.loop
 local utils = require('project-manager.utils')
-local telescope = require('project-manager.telescope')
 
 M.config = {
   projects_file = vim.fn.stdpath('data') .. '/projects.json',
@@ -61,7 +60,13 @@ function M.add_recent_project(path)
 end
 
 function M.show_recent_projects()
-  telescope.recent_projects()
+  local ok, fzf = pcall(require, 'project-manager.fzf')
+  if ok then
+    fzf.recent_projects()
+  else
+    local telescope = require('project-manager.telescope')
+    telescope.recent_projects()
+  end
 end
 
 function M.open_project(path)
@@ -101,7 +106,13 @@ function M.open_project(path)
 end
 
 function M.show_workspaces()
-  telescope.workspaces()
+  local ok, fzf = pcall(require, 'project-manager.fzf')
+  if ok then
+    fzf.workspaces()
+  else
+    local telescope = require('project-manager.telescope')
+    telescope.workspaces()
+  end
 end
 
 function M.save_workspace(name)
