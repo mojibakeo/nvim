@@ -86,6 +86,16 @@ end, { desc = 'コメントトグル', silent = true })
 
 map('n', '<Space>e', toggle_neotree, { desc = 'ファイルツリー切り替え', silent = true })
 
+-- エラージャンプ
+map('n', '<Space>8', function()
+  local ok, trouble = pcall(require, 'trouble')
+  if ok then
+    vim.cmd('Trouble diagnostics toggle filter.buf=0 focus=true')
+  else
+    vim.diagnostic.goto_next()
+  end
+end, { desc = 'エラーへジャンプ', silent = true })
+
 -- Project Manager キーマップ
 map('n', '<Space>r', function()
   local ok, project_manager = pcall(require, 'project-manager')
