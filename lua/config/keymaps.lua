@@ -30,7 +30,6 @@ map('n', '<Space><Space>', fzf('buffers'), { desc = 'バッファ一覧', silent
 map('n', '<Space>a', fzf('live_grep'), { desc = 'ripgrep 検索', silent = true })
 map('n', '<Space>o', fzf('git_files'), { desc = 'Gitファイル検索', silent = true })
 map('n', '<Space>O', fzf('files'), { desc = '全ファイル検索', silent = true })
-map('n', '<C-o>', fzf('files'), { desc = 'ファイル検索', silent = true })
 map('n', '<C-e>', fzf('oldfiles'), { desc = '最近開いたファイル', silent = true })
 
 map('i', '<C-h>', '<BS>', silent)

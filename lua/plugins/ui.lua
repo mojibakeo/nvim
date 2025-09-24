@@ -222,40 +222,40 @@ return {
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     opts = {},
   },
-  -- {
-  --   'shellRaining/hlchunk.nvim',
-  --   event = { 'BufReadPre', 'BufNewFile' },
-  --   opts = {
-  --     chunk = {
-  --       enable = true,
-  --       use_treesitter = true,
-  --       chars = {
-  --         horizontal_line = '─',
-  --         vertical_line = '│',
-  --         left_top = '┌',
-  --         left_bottom = '└',
-  --         right_arrow = '►',
-  --       },
-  --       style = '#806d9c',
-  --     },
-  --     indent = {
-  --       enable = true,
-  --       chars = { '│' },
-  --       style = { '#2d3149' },
-  --     },
-  --   },
-  -- },
+  {
+    'shellRaining/hlchunk.nvim',
+    event = { 'BufReadPre', 'BufNewFile' },
+    opts = {
+      chunk = {
+        enable = true,
+        use_treesitter = true,
+        chars = {
+          horizontal_line = '─',
+          vertical_line = '│',
+          left_top = '┌',
+          left_bottom = '└',
+          right_arrow = '►',
+        },
+        style = '#806d9c',
+      },
+      indent = {
+        enable = true,
+        chars = { '│' },
+        style = { '#2d3149' },
+      },
+    },
+  },
   {
     'kazhala/close-buffers.nvim',
     opts = {},
   },
-  -- {
-  --   'Bekaboo/dropbar.nvim',
-  --   dependencies = {
-  --     'nvim-telescope/telescope-fzf-native.nvim',
-  --   },
-  --   opts = {},
-  -- },
+  {
+    'Bekaboo/dropbar.nvim',
+    dependencies = {
+      'nvim-telescope/telescope-fzf-native.nvim',
+    },
+    opts = {},
+  },
   {
     'monaqa/dial.nvim',
     keys = {
